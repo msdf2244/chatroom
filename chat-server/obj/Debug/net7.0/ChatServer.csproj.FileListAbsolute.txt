@@ -1,0 +1,15 @@
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/bin/Debug/net7.0/ChatServer
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/bin/Debug/net7.0/ChatServer.deps.json
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/bin/Debug/net7.0/ChatServer.runtimeconfig.json
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/bin/Debug/net7.0/ChatServer.dll
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/bin/Debug/net7.0/ChatServer.pdb
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/ChatServer.csproj.AssemblyReference.cache
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/ChatServer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/ChatServer.AssemblyInfoInputs.cache
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/ChatServer.AssemblyInfo.cs
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/ChatServer.csproj.CoreCompileInputs.cache
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/ChatServer.dll
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/refint/ChatServer.dll
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/ChatServer.pdb
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/ChatServer.genruntimeconfig.cache
+/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/Debug/net7.0/ref/ChatServer.dll
