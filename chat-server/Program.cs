@@ -33,7 +33,8 @@ class Server {
         return fields;
     }
 
-    private void HandleUser(User user) {
+    private void HandleUser(object obj) {
+        User user = (User) obj;
         string[] fields = ParseNextRequest(user.Connection);
         string command = fields[0];
         while (true) {
@@ -73,26 +74,39 @@ class Server {
         }
     }
     public void Start() {
+        List<Thread> threads = new List<Thread>();
         socket.Listen();
+        Console.WriteLine($"Server is listening on {ipEndPoint}");
         while (true) {
-            Socket connection = socket.Accept();
-            Console.WriteLine(
-                $"Accepted connection from {connection.RemoteEndPoint}");
-            string[] fields = ParseNextRequest(connection);
-            if (fields[0] == "CONNECT") {
-                User newUser = new User(connection, fields[1]);
-                Console.WriteLine($"New user [{fields[1]}] joined.");
-                newUser.Send($"CONNECTED|{fields[1]}|");
-                foreach (User user in Users) {
-                    user.Send($"JOINED|{newUser.Name}|");
+            try {
+                Socket connection = socket.Accept();
+                Console.WriteLine(
+                    $"Accepted connection from {connection.RemoteEndPoint}");
+                string[] fields = ParseNextRequest(connection);
+                if (fields[0] == "CONNECT") {
+                    User newUser = new User(connection, fields[1]);
+                    Console.WriteLine($"New user [{fields[1]}] joined.");
+                    newUser.Send($"CONNECTED|{fields[1]}|");
+                    foreach (User user in Users) {
+                        user.Send($"JOINED|{newUser.Name}|");
+                    }
+                    Users.Add(newUser);
+                    // TODO: Create new thread for new user
+                    Thread thread = new Thread(new ParameterizedThreadStart(HandleUser));
+                    thread.Start(newUser);
+                    threads.Add(thread);
+                } else {
+                    connection.Close();
                 }
-                Users.Add(newUser);
-                // TODO: Create new thread for new user
-            } else {
-                connection.Close();
-                continue;
+            } catch (Exception e) {
+                Console.WriteLine(e);
+                break;
             }
         }
+        foreach (Thread thread in threads) {
+            thread.Join();
+        }
+        socket.Close();
     }
 }
 

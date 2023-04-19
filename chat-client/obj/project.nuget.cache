@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0wy0d9sGmSFnFa90BcgB4YmNK8yNGXdYqX/Iwlrzhg4dFCElLYK0+UA8IOVvfKrZSRzGMs8JdZEputvKeNasaQ==",
+  "dgSpecHash": "8hBf84nu3GWgCk66Un+JQlLsD5JLgOwyP+S4pxan0Dx0H1CXI3emsDQbPL2XIdwXaqqZ7QOKWIMk9B6NABpQLg==",
   "success": true,
-  "projectFilePath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-client/ChatClient.csproj",
+  "projectFilePath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-client/ChatClient.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

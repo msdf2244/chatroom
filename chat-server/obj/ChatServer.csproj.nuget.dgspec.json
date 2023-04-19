@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/ChatServer.csproj": {}
+    "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/ChatServer.csproj": {}
   },
   "projects": {
-    "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/ChatServer.csproj": {
+    "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/ChatServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/ChatServer.csproj",
+        "projectUniqueName": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/ChatServer.csproj",
         "projectName": "ChatServer",
-        "projectPath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/ChatServer.csproj",
+        "projectPath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/ChatServer.csproj",
         "packagesPath": "/Users/marcusdefreitas/.nuget/packages/",
-        "outputPath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chat-server/obj/",
+        "outputPath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/marcusdefreitas/.nuget/NuGet/NuGet.Config"
