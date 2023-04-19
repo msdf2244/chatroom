@@ -18,7 +18,7 @@ class Server {
     private const int PORT = 9000;
     private Socket socket;
     public List<User> Users = new List<User>();
-    private IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, PORT);
+		private IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, PORT);
     public Server() {
         socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
         socket.Bind(ipEndPoint);
@@ -26,14 +26,17 @@ class Server {
 
     private string[] ParseNextRequest(Socket connection) {
         byte[] buffer = new byte[MAXLINE];
-        connection.Receive(buffer);
+        connection.Receive(buffer); 
         string data = Encoding.ASCII.GetString(buffer);
         string[] fields = data.Split("|");
         fields[0] = fields[0].ToUpper();
         return fields;
     }
 
-    private void HandleUser(object obj) {
+    private void HandleUser(object? obj) {
+        if (obj == null) {
+            throw new NullReferenceException("User should not be null");
+        }
         User user = (User) obj;
         string[] fields = ParseNextRequest(user.Connection);
         string command = fields[0];
@@ -84,6 +87,13 @@ class Server {
                     $"Accepted connection from {connection.RemoteEndPoint}");
                 string[] fields = ParseNextRequest(connection);
                 if (fields[0] == "CONNECT") {
+                    if (Users.Select((user) => user.Name).Contains(fields[1])) {
+                        string response = 
+                            $"REJECTED|{fields[1]}|Name already in use|";
+                        connection.Send(Encoding.ASCII.GetBytes(response));
+                        connection.Close();
+                        continue;
+                    }
                     User newUser = new User(connection, fields[1]);
                     Console.WriteLine($"New user [{fields[1]}] joined.");
                     newUser.Send($"CONNECTED|{fields[1]}|");
@@ -92,7 +102,8 @@ class Server {
                     }
                     Users.Add(newUser);
                     // TODO: Create new thread for new user
-                    Thread thread = new Thread(new ParameterizedThreadStart(HandleUser));
+                    Thread thread = 
+                        new Thread(new ParameterizedThreadStart(HandleUser));
                     thread.Start(newUser);
                     threads.Add(thread);
                 } else {

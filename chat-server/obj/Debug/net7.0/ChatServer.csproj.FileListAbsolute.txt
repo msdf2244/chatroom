@@ -28,3 +28,18 @@
 /Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/obj/Debug/net7.0/ChatServer.pdb
 /Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/obj/Debug/net7.0/ChatServer.genruntimeconfig.cache
 /Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/obj/Debug/net7.0/ref/ChatServer.dll
+/home/msdef/dev/repos/chatroom/chat-server/bin/Debug/net7.0/ChatServer
+/home/msdef/dev/repos/chatroom/chat-server/bin/Debug/net7.0/ChatServer.deps.json
+/home/msdef/dev/repos/chatroom/chat-server/bin/Debug/net7.0/ChatServer.runtimeconfig.json
+/home/msdef/dev/repos/chatroom/chat-server/bin/Debug/net7.0/ChatServer.dll
+/home/msdef/dev/repos/chatroom/chat-server/bin/Debug/net7.0/ChatServer.pdb
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/ChatServer.csproj.AssemblyReference.cache
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/ChatServer.GeneratedMSBuildEditorConfig.editorconfig
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/ChatServer.AssemblyInfoInputs.cache
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/ChatServer.AssemblyInfo.cs
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/ChatServer.csproj.CoreCompileInputs.cache
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/ChatServer.dll
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/refint/ChatServer.dll
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/ChatServer.pdb
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/ChatServer.genruntimeconfig.cache
+/home/msdef/dev/repos/chatroom/chat-server/obj/Debug/net7.0/ref/ChatServer.dll

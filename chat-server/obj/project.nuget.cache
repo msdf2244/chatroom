@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "wfvXFT5iifNaAClcHZqiQvF4pMu5Mxl9xooEtxRZNuwhrOz/HCONbnD+1c6TEqXeW8xbbH8eWleLL3zhuYtneQ==",
+  "dgSpecHash": "KUqziLU9HzxG79fTyZREVICUcUdgyX8/kkAvs0ffjZWZPvA2IHu2nop4RLEBfiyl37/GMT+FjqsgEM7c08IPqA==",
   "success": true,
-  "projectFilePath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/ChatServer.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/msdef/dev/repos/chatroom/chat-server/ChatServer.csproj",
+  "expectedPackageFiles": [
+    "/home/msdef/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.2/microsoft.aspnetcore.app.ref.7.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

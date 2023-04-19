@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/ChatServer.csproj": {}
+    "/home/msdef/dev/repos/chatroom/chat-server/ChatServer.csproj": {}
   },
   "projects": {
-    "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/ChatServer.csproj": {
+    "/home/msdef/dev/repos/chatroom/chat-server/ChatServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/ChatServer.csproj",
+        "projectUniqueName": "/home/msdef/dev/repos/chatroom/chat-server/ChatServer.csproj",
         "projectName": "ChatServer",
-        "projectPath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/ChatServer.csproj",
-        "packagesPath": "/Users/marcusdefreitas/.nuget/packages/",
-        "outputPath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/obj/",
+        "projectPath": "/home/msdef/dev/repos/chatroom/chat-server/ChatServer.csproj",
+        "packagesPath": "/home/msdef/.nuget/packages/",
+        "outputPath": "/home/msdef/dev/repos/chatroom/chat-server/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/marcusdefreitas/.nuget/NuGet/NuGet.Config"
+          "/home/msdef/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -48,12 +48,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
         }
       }
     }
