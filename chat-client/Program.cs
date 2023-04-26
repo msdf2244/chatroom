@@ -2,97 +2,22 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-public class ChatClient
-{
-    private TcpClient client;
-    private StreamReader reader;
-    private StreamWriter writer;
-    private string name;
-
-    public ChatClient(string name, string serverIp, int serverPort)
-    {
-        client = new TcpClient(serverIp, serverPort);
-        reader = new StreamReader(client.GetStream(), Encoding.ASCII);
-        writer = new StreamWriter(client.GetStream(), Encoding.ASCII);
-        this.name = name;
-    }
-
-    public void Run()
-    {
-        // Send connect packet
-        writer.WriteLine("CONNECT|{0}|", name);
-        writer.Flush();
-
-        while (true)
-        {
-            string line = reader.ReadLine();
-            if (line == null)
-            {
-                break;
-            }
-
-            // Parse server response
-            string[] parts = line.Split('|');
-            if (parts.Length == 0)
-            {
-                continue;
-            }
-
-            switch (parts[0].ToUpper())
-            {
-                case "CONNECTED":
-                    Console.WriteLine("Joined chat as {0}", parts[1]);
-                    break;
-                case "REJECTED":
-                    Console.WriteLine("Join rejected: {0}", parts[2]);
-                    break;
-                case "PUBLIC":
-                    Console.WriteLine("{0}: {1}", parts[1], parts[2]);
-                    break;
-                case "JOINED":
-                    Console.WriteLine("{0} joined the chat", parts[1]);
-                    break;
-                case "LEFT":
-                    Console.WriteLine("{0} left the chat", parts[1]);
-                    break;
-                case "ERROR":
-                    Console.WriteLine("Unknown command: {0}", parts[1]);
-                    break;
-            }
-        }
-
-        // Send exit packet
-        writer.WriteLine("EXIT|");
-        writer.Flush();
-
-        // Close the client socket
-        client.Close();
-    }
-
-    public void Send(string message)
-    {
-        // Send message packet
-        writer.WriteLine("SAY|{0}|", message);
-        writer.Flush();
-    }
-}
-
 class Client {
+    public int scroll = 0;
     private const int PORT = 9000;
     private Socket socket;
-    public string username;
+    public string Name;
     public Client(IPAddress ip, string username) {
         socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
         socket.Connect(ip, PORT);
-        this.username = username;
+        this.Name = username;
         Console.WriteLine($"Connected to {ip}:{PORT}");
     }
     private void Send(string data) {
-        Console.WriteLine($"{data}");
         socket.Send(Encoding.ASCII.GetBytes(data));
     }
     public void Connect() {
-        Send($"CONNECT|{username}|");
+        Send($"CONNECT|{Name}|");
     }
     public void Say(string message) {
         Send($"SAY|{message}|");
@@ -101,18 +26,53 @@ class Client {
         Send($"EXIT|");
         socket.Close();
     }
+    public void Close() {
+        socket.Close();
+    }
+    public string[] ParseNextRequest() {
+        byte[] buffer = new byte[1024];
+        socket.Receive(buffer); 
+        string data = Encoding.ASCII.GetString(buffer);
+        string[] fields = data.Split("|");
+        fields[0] = fields[0].ToUpper();
+        return fields;
+    }
+    public bool HandleResponse() {
+        Console.SetCursorPosition(0, Math.Max(scroll - 1,0));
+        string[] fields = ParseNextRequest();
+        switch (fields[0].ToUpper()) {
+            case "CONNECTED":
+                Console.WriteLine($"Joined chat as {fields[1]}");
+                break;
+            case "REJECTED":
+                Console.WriteLine($"Join rejected: {fields[2]}");
+                return false;
+            case "PUBLIC":
+                Console.WriteLine($"[{fields[1]}] {fields[2]}");
+                break;
+            case "JOINED":
+                Console.WriteLine($"{fields[1]} joined the chat");
+                break;
+            case "LEFT":
+                Console.WriteLine($"{fields[1]} left the chat");
+                break;
+            case "ERROR":
+                Console.WriteLine($"Unknown command: {fields[1]}");
+                break;
+        }
+        return true;
+    }
 }
 
 class Program {
-    static void Main(string[] args) {
-        if (args.Length != 2) {
-            Console.WriteLine("usage: dotnet run <ip> <username>");
-            return;
+    static void UiHandler(object? obj) {
+        if (obj == null) {
+            throw new NullReferenceException("Client should not be null");
         }
-        Client client = new Client(IPAddress.Parse(args[0]), args[1]);
-        client.Connect();
+        Client client = (Client) obj;
         while (true) {
-            string line = Console.ReadLine();
+            Console.Write($"{client.Name}> ");
+            string? line = Console.ReadLine();
             if (line == "" || line == null) {
                 break;
             }
@@ -120,7 +80,31 @@ class Program {
                 line.Remove('|');
             }
             client.Say(line);
+            client.scroll +=1;
         }
         client.Exit();
+    }
+    static void Listener(object? obj) {
+        if (obj == null) {
+            throw new NullReferenceException("Client should not be null");
+        }
+        Client client = (Client) obj;
+        while (client.HandleResponse()) {
+            client.scroll+=1;
+        }
+        client.Close();
+    }
+    static void Main(string[] args) {
+        Console.Clear();
+        if (args.Length != 2) {
+            Console.WriteLine("usage: dotnet run <ip> <username>");
+            return;
+        }
+        Client client = new Client(IPAddress.Parse(args[0]), args[1]);
+        client.Connect();
+        Thread uiThread = new Thread(new ParameterizedThreadStart(UiHandler));
+        uiThread.Start(client);
+        Thread listenerThread = new Thread(new ParameterizedThreadStart(Listener));
+        listenerThread.Start(client);
     }
 }

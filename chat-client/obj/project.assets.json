@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/home/msdef/.nuget/packages/": {}
+    "/Users/marcusdefreitas/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/msdef/dev/repos/chatroom/chat-client/ChatClient.csproj",
+      "projectUniqueName": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-client/ChatClient.csproj",
       "projectName": "ChatClient",
-      "projectPath": "/home/msdef/dev/repos/chatroom/chat-client/ChatClient.csproj",
-      "packagesPath": "/home/msdef/.nuget/packages/",
-      "outputPath": "/home/msdef/dev/repos/chatroom/chat-client/obj/",
+      "projectPath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-client/ChatClient.csproj",
+      "packagesPath": "/Users/marcusdefreitas/.nuget/packages/",
+      "outputPath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-client/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/msdef/.nuget/NuGet/NuGet.Config"
+        "/Users/marcusdefreitas/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -54,18 +54,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.2, 7.0.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
       }
     }
   }

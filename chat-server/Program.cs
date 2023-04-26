@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Text;
 
 class Server {
-    private const int MAXLINE = 1024;
+
     public class User {
         public Socket Connection;
         public string Name;
@@ -15,10 +15,14 @@ class Server {
             Connection.Send(Encoding.ASCII.GetBytes(data));
         }
     }
+
+    private const int MAXLINE = 1024;
     private const int PORT = 9000;
+
     private Socket socket;
     public List<User> Users = new List<User>();
 		private IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, PORT);
+
     public Server() {
         socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
         socket.Bind(ipEndPoint);
@@ -43,7 +47,7 @@ class Server {
         while (true) {
             switch (command) {
                 case "CONNECT": {
-                    Console.WriteLine($"[{user.Name}] Already connected");
+                    Console.WriteLine($"User [{user.Name}] is already connected");
                     user.Send($"REJECTED|{user.Name}|Already connected|");
                     break;
                 }
@@ -76,6 +80,7 @@ class Server {
             command = fields[0];
         }
     }
+
     public void Start() {
         List<Thread> threads = new List<Thread>();
         socket.Listen();
@@ -87,21 +92,24 @@ class Server {
                     $"Accepted connection from {connection.RemoteEndPoint}");
                 string[] fields = ParseNextRequest(connection);
                 if (fields[0] == "CONNECT") {
-                    if (Users.Select((user) => user.Name).Contains(fields[1])) {
+                    string username = fields[1];
+                    if (Users.Select((user) => user.Name).Contains(username)) {
+                        Console.WriteLine(
+                            $"Username [{username}] is already taken. " +
+                            "Rejecting connection.");
                         string response = 
-                            $"REJECTED|{fields[1]}|Name already in use|";
+                            $"REJECTED|{username}|Name is Taken|";
                         connection.Send(Encoding.ASCII.GetBytes(response));
                         connection.Close();
                         continue;
                     }
-                    User newUser = new User(connection, fields[1]);
-                    Console.WriteLine($"New user [{fields[1]}] joined.");
-                    newUser.Send($"CONNECTED|{fields[1]}|");
+                    User newUser = new User(connection, username);
+                    Console.WriteLine($"New user [{username}] joined.");
+                    newUser.Send($"CONNECTED|{username}|");
                     foreach (User user in Users) {
                         user.Send($"JOINED|{newUser.Name}|");
                     }
                     Users.Add(newUser);
-                    // TODO: Create new thread for new user
                     Thread thread = 
                         new Thread(new ParameterizedThreadStart(HandleUser));
                     thread.Start(newUser);
