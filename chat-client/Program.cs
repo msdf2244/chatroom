@@ -25,6 +25,12 @@ class Client {
     public void Say(string message) {
         Send($"SAY|{message}|");
     }
+    public void List() {
+        Send($"LIST|");
+    }
+    public void Time() {
+        Send($"TIME|");
+    }
     public void Exit() {
         Send($"EXIT|");
         socket.Close();
@@ -58,6 +64,12 @@ class Client {
                     break;
                 case "ERROR":
                     Log.Text += $"Unknown command: {fields[1]}\n";
+                    break;
+                case "LIST":
+                    Log.Text += $"List of connected users: {fields[1]}\n";
+                    break;
+                case "TIME":
+                    Log.Text += $"Currnet server time: {fields[1]}\n";
                     break;
             }
             return;
