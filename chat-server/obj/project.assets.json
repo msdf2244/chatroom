@@ -8,7 +8,8 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/Users/marcusdefreitas/.nuget/packages/": {}
+    "/Users/marcusdefreitas/.nuget/packages/": {},
+    "/Users/marcusdefreitas/Library/Application Support/Godot/mono/GodotNuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -19,8 +20,12 @@
       "packagesPath": "/Users/marcusdefreitas/.nuget/packages/",
       "outputPath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-server/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/Users/marcusdefreitas/Library/Application Support/Godot/mono/GodotNuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/Users/marcusdefreitas/.nuget/NuGet/NuGet.Config"
+        "/Users/marcusdefreitas/.nuget/NuGet/NuGet.Config",
+        "/Users/marcusdefreitas/.nuget/NuGet/config/Godot.Offline.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"

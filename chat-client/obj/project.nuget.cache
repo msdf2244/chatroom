@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "8hBf84nu3GWgCk66Un+JQlLsD5JLgOwyP+S4pxan0Dx0H1CXI3emsDQbPL2XIdwXaqqZ7QOKWIMk9B6NABpQLg==",
+  "dgSpecHash": "PDTSfnoRmYyp8ZezX7jRNWCa8r3BqeGVQaGJnbxfWyUGg9A1Opf3C6ged1ZOcnO7dvqdNN62pARTvZDtjiKGNw==",
   "success": true,
   "projectFilePath": "/Users/marcusdefreitas/Library/CloudStorage/OneDrive-LeTourneauUniversity/Courses/SPRING 2023/Advanced Networks/Assignments/Project/chatroom/chat-client/ChatClient.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/marcusdefreitas/.nuget/packages/microsoft.dotnet.platformabstractions/3.1.6/microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
+    "/Users/marcusdefreitas/.nuget/packages/nstack.core/1.0.7/nstack.core.1.0.7.nupkg.sha512",
+    "/Users/marcusdefreitas/.nuget/packages/system.codedom/7.0.0/system.codedom.7.0.0.nupkg.sha512",
+    "/Users/marcusdefreitas/.nuget/packages/system.management/7.0.0/system.management.7.0.0.nupkg.sha512",
+    "/Users/marcusdefreitas/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512",
+    "/Users/marcusdefreitas/.nuget/packages/terminal.gui/1.10.1/terminal.gui.1.10.1.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -3,6 +3,7 @@ using System.Net.Sockets;
 using System.Text;
 
 class Server {
+    const int MAX_MESSAGE_LENGTH = 200;
 
     public class User {
         public Socket Connection;
@@ -53,6 +54,10 @@ class Server {
                 }
                 case "SAY": {
                     string message = fields[1];
+                    if (message.Length > MAX_MESSAGE_LENGTH) {
+                        user.Send($"REJECTED|{user.Name}|Message is too long|");
+                        break;
+                    }
                     Console.WriteLine($"[{user.Name}]  {message}");
                     foreach (User otherUser in Users) {
                         if (otherUser != user) {
