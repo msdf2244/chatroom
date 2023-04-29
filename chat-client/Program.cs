@@ -9,6 +9,7 @@ class Client {
     private const int PORT = 9000;
     private Socket socket;
     public string Name;
+    public bool connected = false;
     public TextView Log;
     public Client(IPAddress ip, string username) {
         socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
@@ -25,9 +26,18 @@ class Client {
     public void Say(string message) {
         Send($"SAY|{message}|");
     }
+    public void List() {
+        Send($"LIST|");
+    }
+    public void Time() {
+        Send($"TIME|");
+    }
     public void Exit() {
         Send($"EXIT|");
         socket.Close();
+    }
+    public void Private(string recipient, string message) {
+        Send($"PRIVATE|{recipient}|{message}|");
     }
     public string[] ParseNextRequest() {
         byte[] buffer = new byte[1024];
@@ -38,14 +48,23 @@ class Client {
         return fields;
     }
     public void HandleResponse() {
-        string[] fields = ParseNextRequest();
+        string[] fields;
+        try {
+            fields = ParseNextRequest();
+
+        } catch (SocketException e) {
+            Log.Text += "Server broke connection. Try rerunning.\n";
+            return;
+        }
         Application.MainLoop.Invoke(() => {
             switch (fields[0].ToUpper()) {
                 case "CONNECTED":
                     Log.Text += $"Joined chat as {fields[1]}\n";
+                    connected = true;
                     break;
                 case "REJECTED":
-                    Log.Text += $"Join rejected: {fields[2]}. If username is taken, press C-Q and try with a new name\n";
+                    Log.Text += $"Join rejected: {fields[2]}\n";
+                    Log.Text += "Type a new username and press enter.\n";
                     return;
                 case "PUBLIC":
                     Log.Text += $"[{fields[1]}] {fields[2]}\n";
@@ -55,6 +74,21 @@ class Client {
                     break;
                 case "LEFT":
                     Log.Text += $"{fields[1]} left the chat\n";
+                    break;
+                case "LIST":
+                    Log.Text += $"List of connected {fields[1]} users:\n";
+                    foreach (string name in fields.Skip(2)) {
+                        Log.Text += $"\t[{name}]\n";
+                    }
+                    break;
+                case "TIME":
+                    Log.Text += $"Current Server Time: {fields[1]}\n";
+                    break;
+                case "PRIVATE":
+                    Log.Text += $"<PRIVATE> [{fields[1]}] {fields[2]}\n";
+                    break;
+                case "PRIVERR":
+                    Log.Text += $"Private message to [{fields[1]}] failed - {fields[2]}\n";
                     break;
                 case "ERROR":
                     Log.Text += $"Unknown command: {fields[1]}\n";
@@ -84,7 +118,7 @@ class Program {
             Width = Dim.Fill(),
             Height = Dim.Fill(),
         };
-        var input = new Window("input") {
+        var input = new Window("Input") {
             X = 0,
             Y = 0,  
             Width = Dim.Fill(),
@@ -102,11 +136,41 @@ class Program {
         messages.Add(log);
         client.Log = log;
         log.Text += "Welcome to the chatroom. Press C-Q to quit.\n";
+        log.Text += "Type \\list to get a list of users.\n";
+        log.Text += "Type \\time to get the server's time.\n";
+        log.Text += "Type \\private <name> <message> to send a private message\n";
         log.ReadOnly = true;
         text_area.KeyUp += (e) => {
             if (e.KeyEvent.Key == Key.Enter && text_area.Text != "") {
-                log.Text += $"<ME> {text_area.Text}\n";
-                client.Say(text_area.Text.ToString());
+                if (!client.connected) {
+                    client.Name = text_area.Text.ToString();
+                    text_area.Text = "";
+                    client.Connect();
+                    return;
+                }
+                if (text_area.Text.StartsWith("\\")) {
+                    char[] delimiters = { ' ' };
+                    string[] fields = text_area.Text.ToString().Split(delimiters, 3);
+                    string command = fields[0].ToUpper();
+                    log.Text += command + "\n";
+                    switch (command) {
+                        case "\\LIST": {
+                            client.List();
+                            break;
+                        }
+                        case "\\TIME": {
+                            client.Time();
+                            break;
+                        }
+                        case "\\PRIVATE": {
+                            client.Private(fields[1], fields[2]);
+                            break;
+                        }
+                    }
+                } else {
+                    log.Text += $"<ME> {text_area.Text}\n";
+                    client.Say(text_area.Text.ToString());
+                }
                 text_area.Text= "";
             }
         };
