@@ -93,14 +93,7 @@ class Client {
                 case "ERROR":
                     Log.Text += $"Unknown command: {fields[1]}\n";
                     break;
-                case "LIST":
-                    Log.Text += $"List of connected users: {fields[1]}\n";
-                    break;
-                case "TIME":
-                    Log.Text += $"Currnet server time: {fields[1]}\n";
-                    break;
             }
-            return;
         });
     }
 }
